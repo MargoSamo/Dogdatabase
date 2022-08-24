@@ -1,0 +1,64 @@
+Создать 5 классов предметов реализующих интерфейс homeStaff
+Создать 5 списков и положить в них эти элементы
+Пройтись по каждому списку при помощи циклов for(;;), for(:), forEach, Iterator, stream
+И передать каждый элемент в метод logUsage
+И в конце вызвать reportUsage
+
+
+Map<String, String> map = new HashMap<>();
+    map.put("1", "Понедельник");
+    map.put("2", "Вторник");
+    map.put("3", "Среда");
+
+     // Map.Entry - описываем пару (ключ - значение) "3=Среда" и т.п.
+     // entrySet - возращает множество со значениями карты, т.е. [3=Среда, 2=Вторник, 1=Понедельник]
+
+    for (Map.Entry<String, String> entry : map.entrySet()) {
+        System.out.println("ID =  " + entry.getKey() + " День недели = " + entry.getValue());
+    }
+
+    System.out.println();
+
+     // Iterator - интерфейс, для организации цикла для перебора коллекций
+     // hasNext - true, если есть еще элементы
+     // next - возвращает слудующий элемент
+
+    Iterator<Map.Entry<String, String>> entries = map.entrySet().iterator();
+    while (entries.hasNext()) {
+        Map.Entry<String, String> entry = entries.next();
+        System.out.println("ID = " + entry.getKey() + " День недели = " + entry.getValue());
+    }
+
+    System.out.println();
+
+     // keySet - возвращает множество ключей
+
+    for (String key : map.keySet()) {
+        System.out.println("ID = " + key + ", День недели = " +  map.get(key));
+     }
+    System.out.println();
+
+    *******************************8
+
+    Если вас интересуют только ключи, вы можете перебирать keySet() на карте:
+
+    Map<String, Object> map = ...;
+
+    for (String key : map.keySet()) {
+        // ...
+    }
+    Если вам нужны только значения, используйте values():
+
+    for (Object value : map.values()) {
+        // ...
+    }
+    Наконец, если вы хотите как ключ, так и значение, используйте entrySet():
+
+    for (Map.Entry<String, Object> entry : map.entrySet()) {
+        String key = entry.getKey();
+        Object value = entry.getValue();
+        // ...
+    }
+    Одно предостережение: если вы хотите удалить элементы средней итерации, вам
+    нужно сделать это через Iterator (см. ответ karim79). Однако изменение значений
+    элементов в порядке (см. Map.Entry).
